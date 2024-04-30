@@ -1,0 +1,168 @@
+$bg-color: #111419;
+
+// header sticky color
+$header-sticky-color: #191e26;
+
+// fonts styles
+$font-family: Arial;
+$font-color: #fff;
+$paragraph-size: 23px;
+$title-size: 45px;
+
+// link login styles
+$login-border: 2px solid #BEA362;
+$login-bg: #BEA362;
+$login-color: #fff;
+$login-size: 20px;
+
+// link signup styles
+$signup-border: 2px solid #DB1623;
+$signup-bg: #DB1623;
+$signup-color: #fff;
+$signup-size: 20px;
+
+// footer link style
+$footer-link-color: #1D79A0;
+
+// container styles template
+%tplcontainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 15px;
+}
+
+// link styles template
+%tpllink {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 17px;
+  user-select: auto;
+}
+
+// logn link styles template
+%tpllogin {
+  color: $login-color;
+  border: $login-border;
+}
+
+// signup styles template
+%tplsignup {
+  color: $signup-color;
+  border: $signup-border;
+}
+
+body {
+  background-color: $bg-color;
+  font-family: $font-family;
+  padding: 0;
+  margin: 0;
+}
+
+section {
+  pointer-events: none;
+  user-select: none;
+}
+
+.container {
+  @extend %tplcontainer;
+}
+
+h1 {
+  color: $font-color;
+  font-size: $title-size;
+}
+
+p {
+  color: $font-color;
+  font-size: $paragraph-size;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.logo {
+  max-width: 300px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px 50px;
+  transition: 0.3s ease;
+  left: 0;
+  max-width: 100%;
+
+  &.sticky {
+    height: 100px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: $header-sticky-color;
+  }
+}
+
+
+footer {
+  text-align: center;
+
+  & a {
+    @extend %tpllink;
+    color: $footer-link-color;
+    font-size: 15px;
+  }
+
+}
+
+.log_in {
+  @extend %tpllogin;
+  @extend %tpllink;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: $login-bg;
+  }
+}
+
+.sign_up {
+  @extend %tplsignup;
+  @extend %tpllink;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: $signup-bg;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 25px;
+}
+
+// desktop
+@media screen and (min-width: 768px) {}
+
+// mobile
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity 0.3s linear;
+    transition: height 0.3s linear;
+
+    &.sticky {
+      height: 50px;
+
+      .logo {
+        opacity: 0;
+        display: none;
+        transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+      }
+    }
+  }
+}
